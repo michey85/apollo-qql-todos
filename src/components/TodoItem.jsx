@@ -1,13 +1,13 @@
 import { Checkbox, Text, CloseButton, HStack } from '@chakra-ui/react';
 
-const TodoItem = ({ id, text, completed }) => {
+const TodoItem = ({ id, title, completed }) => {
 
   return (
     <HStack spacing={3}>
       <Checkbox
-        checked={completed}
+        isChecked={completed}
       />
-      <Text>{text}</Text>
+      <Text>{title}</Text>
       <CloseButton />
     </HStack>
   );

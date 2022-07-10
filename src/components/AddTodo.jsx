@@ -1,23 +1,31 @@
+import { useState } from 'react';
 import {
   Button,
   FormControl,
   Input,
 } from '@chakra-ui/react';
 
-const AddTodo = ({ value, updateText, handleAction }) => {
+const AddTodo = () => {
+  const [text, setText] = useState('');
+
+  const handleAddTodo = () => {
+    if (text.trim().length) {
+      setText('');
+    }
+  }
+
   const handleKey = (event) => {
-    if (event.key === "Enter") handleAction();
+    if (event.key === "Enter") handleAddTodo();
   }
 
   return (
     <FormControl display={'flex'} mt={6}>
       <Input
-        id="newtodo"
-        value={value}
-        onChange={(e) => updateText(e.target.value)}
+        value={text}
+        onChange={(e) => setText(e.target.value)}
         onKeyPress={handleKey}
       />
-      <Button onClick={handleAction}>Add todo</Button>
+      <Button onClick={handleAddTodo}>Add todo</Button>
     </FormControl>
   );
 };
